@@ -23,7 +23,7 @@ const IdeasPage = async () => {
             <DataNotFoundPage />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-4 gap-3.5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 gap-3.5 md:gap-6">
             {allIdeas.map((idea) => (
               <IdeasPageCard key={idea._id} idea={idea} />
             ))}

@@ -1,10 +1,12 @@
 "use client";
 import { addIdeas } from "@/lib/getData/data";
 import { Button, Input, Label, TextArea } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
 const AddIdeasForm = () => {
+  const router = useRouter();
   const validateImageURL = (url) => {
     return new Promise((resolve) => {
       const img = new Image();
@@ -42,12 +44,17 @@ const AddIdeasForm = () => {
     console.log(ideaData);
     const res = await addIdeas(ideaData);
     console.log(res);
+    if (res.acknowledged) {
+      router.push("/ideas");
+      // e.currentTarget.reset();
+      toast.success("Idea added successfully..");
+    }
   };
 
   return (
     <div>
       <form
-        className="border max-w-xl py-3 px-5 rounded-lg bg-white dark:bg-[#3b4555] overflow-hidden space-y-4 mx-auto"
+        className="border mt-5 max-w-xl py-3 px-5 rounded-lg bg-white dark:bg-[#3b4555] overflow-hidden space-y-4 mx-auto"
         onSubmit={onSubmit}
       >
         {/* idea title */}

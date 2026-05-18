@@ -5,10 +5,13 @@ const getAllIdeas = async () => {
   return data || [];
 };
 
+export const getIdeasById = async (id) => {
+  const res = await fetch(`${process.env.SERVER_URL}/ideas/${id}`);
+  const data = await res.json();
+  return data;
+};
+
 export const addIdeas = async (newIdea) => {
-  const url = await process.env.SERVER_URL;
-  console.log(process.env.SERVER_URL);
-  console.log(url);
   const res = await fetch(`${process.env.SERVER_URL}/ideas`, {
     method: "POST",
     headers: {
@@ -17,7 +20,7 @@ export const addIdeas = async (newIdea) => {
     body: JSON.stringify(newIdea),
   });
   const data = await res.json();
-  // console.log(data);
+  console.log(data);
   return data;
 };
 

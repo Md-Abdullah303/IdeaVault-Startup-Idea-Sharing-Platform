@@ -5,15 +5,16 @@ import Link from "next/link";
 const IdeasPageCard = ({ idea }) => {
   //   console.log(idea);
   const { _id, image, category, tag, shortDescription, title } = idea;
+  console.log(image);
   return (
     <Card className="rounded-[15px] p-0 flex flex-col gap-4 items-start overflow-hidden h-full">
       <div className="relative">
-        <Image
+        <img
           src={image}
           alt={title}
           width={4000}
           height={2000}
-          className="h-80"
+          className="h-80 object-center object-cover"
         />
         <Chip
           color="accent"
