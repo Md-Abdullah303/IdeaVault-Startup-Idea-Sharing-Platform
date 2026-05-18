@@ -1,9 +1,10 @@
 "use client";
+import { addIdeas } from "@/lib/getData/data";
 import { Button, Input, Label, TextArea } from "@heroui/react";
 import React from "react";
 
 const AddIdeasForm = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -22,6 +23,8 @@ const AddIdeasForm = () => {
     };
 
     console.log(ideaData);
+    const res = await addIdeas(ideaData);
+    // console.log(res);
   };
 
   return (
@@ -77,7 +80,7 @@ const AddIdeasForm = () => {
               name="estimatedBudget"
               className="bg-slate-100 border shadow-none border-gray-200 dark:border-[#282b33] dark:bg-[#222831] rounded-xs outline-none"
               id="name"
-              placeholder="Enter Estimated Budget"
+              placeholder="Enter Estimated Budget (USD)"
               type="text"
             />
           </div>

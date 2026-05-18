@@ -24,9 +24,9 @@ const IdeasPageCard = ({ idea }) => {
       </div>
       {/* card info */}
       <div className="space-y-3 px-3 pb-5">
-        <div className="flex items-center gap-4 ">
+        <div className="flex items-start gap-4 ">
           <h1 className="text-2xl font-bold">{title}</h1>
-          <Chip color="success">{tag[0] || tag}</Chip>
+          <Chip color="success">{tag}</Chip>
         </div>
         <p className="line-clamp-2 text-gray-400">{shortDescription}</p>
         <Link href={`/ideas/${_id}`}>
