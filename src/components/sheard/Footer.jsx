@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-blue-950 text-white py-10">
+    <div className="dark:bg-[#081829] bg-[#001F3F] text-white py-10">
       <div className="w-[90%] md:container mx-auto px-3 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 items-start">
         <div className="space-y-3">
           {/* logo */}

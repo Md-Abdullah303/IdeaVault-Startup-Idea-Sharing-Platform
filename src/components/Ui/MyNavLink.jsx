@@ -12,9 +12,9 @@ const MyNavLink = ({ href, children }) => {
 
   return (
     <Link
-      className={`${isActive && `bg-slate-600 text-white`}
-      ${theme == "dark" ? "text-black" : "text-black"}
-  text-[16px] font-medium  py-2 px-2 sm:px-3 rounded-xs hover:text-black hover:bg-slate-300 duration-200
+      className={`${isActive && `bg-slate-600 dark:bg-[#6FD1D7] text-white`}
+      
+  text-[16px] font-medium  py-2 px-2 sm:px-3 rounded-xs hover:text-black dark:hover:text-white hover:bg-slate-300 dark:hover:bg-[#1d797e] duration-200
   `}
       href={href}
     >

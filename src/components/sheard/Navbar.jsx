@@ -22,7 +22,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-40 w-full shadow border-b border-separator bg-white ">
+    <nav className="sticky top-0 z-40 w-full shadow border-b border-separator bg-white dark:bg-[#37353E]">
       <header className="flex h-16 items-center justify-between gap-6  px-6">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 md:gap-4">
@@ -44,7 +44,7 @@ export default function Navbar() {
               )}
             </button>
             <LogoLinkBtn href={"/"}>
-              <div className="flex items-center gap-1 sm:gap-1.5">
+              <div className="flex items-center gap-1 dark:bg-white dark:py-1 dark:px-2 dark:rounded-xs sm:gap-1.5">
                 <Image
                   src={logo}
                   alt="logo"
