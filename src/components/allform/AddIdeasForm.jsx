@@ -36,7 +36,7 @@ const AddIdeasForm = () => {
           <Input
             required
             name="title"
-            className="bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:border-[#282b33] dark:bg-[#222831] outline-none"
+            className="bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:border-[#282b33] dark:bg-[#222831]  outline-none"
             id="name"
             placeholder="Enter your Idea"
             type="text"
