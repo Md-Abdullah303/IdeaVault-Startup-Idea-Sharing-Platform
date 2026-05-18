@@ -6,9 +6,12 @@ import { RiMenuAddLine, RiMenuUnfold2Line } from "react-icons/ri";
 import MyNavLink from "../Ui/MyNavLink";
 import Image from "next/image";
 import SwithThemeBtn from "../Ui/SwithThemeBtn";
+import { useTheme } from "next-themes";
+import LogoLinkBtn from "../Ui/LogoLinkBtn";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const tabs = [
     { href: "/", name: "Home" },
@@ -21,8 +24,8 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 w-full shadow border-b border-separator bg-white ">
       <header className="flex h-16 items-center justify-between gap-6  px-6">
-        <div className="flex items-center gap-5">
-          <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <button
               className="md:hidden "
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -31,25 +34,31 @@ export default function Navbar() {
               {/* <span className="sr-only">Menu</span> */}
 
               {isMenuOpen ? (
-                <RiMenuUnfold2Line className="text-xl" />
+                <RiMenuUnfold2Line
+                  className={`text-xl ${theme == "dark" ? "text-black" : "text-black"}`}
+                />
               ) : (
-                <RiMenuAddLine className="text-xl" />
+                <RiMenuAddLine
+                  className={`text-xl ${theme == "dark" ? "text-black" : "text-black"}`}
+                />
               )}
             </button>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src={logo}
-                alt="logo"
-                width={500}
-                height={400}
-                className="w-8"
-              />
-              <h1 className="font-logo text-xl md:text-2xl font-bold text-slate-700">
-                IdeaVault
-              </h1>
-            </div>
+            <LogoLinkBtn href={"/"}>
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <Image
+                  src={logo}
+                  alt="logo"
+                  width={500}
+                  height={400}
+                  className="sm:w-8 w-6"
+                />
+                <h1 className="font-logo text-lg md:text-2xl font-bold text-slate-700">
+                  IdeaVault
+                </h1>
+              </div>
+            </LogoLinkBtn>
           </div>
-          <ul className="hidden items-center gap-2 md:flex">
+          <ul className="hidden items-center  gap-2 md:flex">
             {tabs.map((tab, ind) => (
               <li key={ind}>
                 <MyNavLink href={tab.href}>{tab.name}</MyNavLink>
@@ -58,7 +67,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center  gap-1">
             <SwithThemeBtn />
             <li>
               <MyNavLink href={"/login"}>Login</MyNavLink>
@@ -70,18 +79,18 @@ export default function Navbar() {
         </div>
       </header>
       {isMenuOpen && (
-        <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">
-            <li>
-              <Link href="#" className="block py-2">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-2">
-                Pricing
-              </Link>
-            </li>
+        <div className={`border-t border-separator md:hidden `}>
+          <ul className="grid grid-cols-2 gap-3 px-2 py-4">
+            {tabs.map((tab, ind) => (
+              <li
+                key={ind}
+                className={`${theme == "dark" ? "text-black" : "text-black"}`}
+              >
+                <MyNavLink href={tab.href} className="block py-2">
+                  {tab.name}
+                </MyNavLink>
+              </li>
+            ))}
           </ul>
         </div>
       )}

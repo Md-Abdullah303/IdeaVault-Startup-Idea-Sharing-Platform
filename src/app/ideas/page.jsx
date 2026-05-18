@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Ideas - IdeaVault",
+};
+
 const IdeasPage = () => {
   return (
     <div>

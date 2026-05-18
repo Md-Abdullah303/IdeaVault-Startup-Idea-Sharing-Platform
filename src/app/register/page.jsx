@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Register - IdeaVault",
+};
+
 const RegisterPage = () => {
   return (
     <div>
