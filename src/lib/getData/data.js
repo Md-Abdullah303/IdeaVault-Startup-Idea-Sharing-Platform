@@ -1,3 +1,4 @@
+"use server";
 const getAllIdeas = async () => {
   const res = await fetch(`${process.env.SERVER_URL}/ideas`);
   const data = await res.json();
@@ -5,8 +6,10 @@ const getAllIdeas = async () => {
 };
 
 export const addIdeas = async (newIdea) => {
+  const url = await process.env.SERVER_URL;
   console.log(process.env.SERVER_URL);
-  const res = await fetch(`http://localhost:3030/ideas`, {
+  console.log(url);
+  const res = await fetch(`${process.env.SERVER_URL}/ideas`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

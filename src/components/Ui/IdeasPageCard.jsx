@@ -6,7 +6,7 @@ const IdeasPageCard = ({ idea }) => {
   //   console.log(idea);
   const { _id, image, category, tag, shortDescription, title } = idea;
   return (
-    <Card className="rounded-[15px] p-0 space-y-4 overflow-hidden">
+    <Card className="rounded-[15px] p-0 flex flex-col gap-4 items-start overflow-hidden h-full">
       <div className="relative">
         <Image
           src={image}
@@ -23,13 +23,15 @@ const IdeasPageCard = ({ idea }) => {
         </Chip>
       </div>
       {/* card info */}
-      <div className="space-y-3 px-3 pb-5">
-        <div className="flex items-start gap-4 ">
-          <h1 className="text-2xl font-bold">{title}</h1>
-          <Chip color="success">{tag}</Chip>
+      <div className="flex-1 flex gap-2.5 flex-col items-start px-3 pb-5">
+        <div className="space-y-3 flex-1">
+          <div className="flex items-start gap-4 ">
+            <h1 className="text-2xl font-bold">{title}</h1>
+            {tag && <Chip color="success">{tag}</Chip>}
+          </div>
+          <p className="line-clamp-2 text-gray-400">{shortDescription}</p>
         </div>
-        <p className="line-clamp-2 text-gray-400">{shortDescription}</p>
-        <Link href={`/ideas/${_id}`}>
+        <Link className="" href={`/ideas/${_id}`}>
           <Button variant="outline">View Details</Button>
         </Link>
       </div>

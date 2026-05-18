@@ -9,7 +9,7 @@ export const metadata = {
 
 const IdeasPage = async () => {
   const allIdeas = await getAllIdeas();
-  console.log(allIdeas);
+  // console.log(allIdeas);
 
   return (
     <div className="w-[90%] md:container mx-auto pt-15 space-y-4 pb-20">
