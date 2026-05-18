@@ -31,6 +31,7 @@ const AddIdeasForm = () => {
       problemStatement: formData.get("problemStatement"),
       proposedSolution: formData.get("proposedSolution"),
       detailedDescription: formData.get("detailedDescription"),
+      postedDate: new Date(),
     };
 
     const imageURL = ideaData.image;

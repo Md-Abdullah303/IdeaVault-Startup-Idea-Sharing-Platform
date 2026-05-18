@@ -17,6 +17,7 @@ const IdeasDetailsPage = async ({ params }) => {
     problemStatement,
     proposedSolution,
     detailedDescription,
+    postedDate,
   } = idea;
 
   return (
@@ -40,10 +41,16 @@ const IdeasDetailsPage = async ({ params }) => {
             {shortDescription}
           </p>
           <p className="text-xl text-gray-400 md:text-3xl grid grid-cols-2 gap-2 w-full">
-            <span>Estimated Budget :</span> <span>{estimatedBudget}</span>
+            <span>Estimated Budget :</span>{" "}
+            <span>
+              {estimatedBudget[0] == "$"
+                ? estimatedBudget
+                : `$${estimatedBudget}`}
+            </span>
           </p>
           <p className="text-gray-400 text-xl md:text-3xl grid grid-cols-2 gap-2 w-full">
-            <span>Posted date :</span> <span>May 12 2026</span>
+            <span>Posted date :</span>{" "}
+            <span>{postedDate ? postedDate : `May 12 2026`}</span>
           </p>
         </Card>
       </div>
