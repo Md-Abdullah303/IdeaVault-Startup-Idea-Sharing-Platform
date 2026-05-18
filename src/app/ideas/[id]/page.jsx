@@ -1,11 +1,12 @@
 import { getIdeasById } from "@/lib/getData/data";
 import { Card, Chip } from "@heroui/react";
+import Image from "next/image";
 
 const IdeasDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   const idea = await getIdeasById(id);
-  console.log(idea);
+  // console.log(idea);
   const {
     title,
     shortDescription,
@@ -22,12 +23,14 @@ const IdeasDetailsPage = async ({ params }) => {
 
   return (
     <div className="w-[90%] md:w-[70%] mx-auto pt-15 pb-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="h-100 overflow-hidden w-full rounded-lg">
-          <img
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="h-100 overflow-hidden bg-cover bg-center w-full border rounded-lg">
+          <Image
             src={image}
             alt={title}
-            className=" w-full bg-contain bg-center rounded-lg overflow-hidden"
+            width={500}
+            height={500}
+            className=" w-full h-full bg-cover bg-center rounded-lg overflow-hidden"
           />
         </div>
         <Card className="rounded-[14px] p-4 border items-start gap-4 justify-center">
@@ -50,7 +53,15 @@ const IdeasDetailsPage = async ({ params }) => {
           </p>
           <p className="text-gray-400 text-xl md:text-3xl grid grid-cols-2 gap-2 w-full">
             <span>Posted date :</span>{" "}
-            <span>{postedDate ? postedDate : `May 12 2026`}</span>
+            <span>
+              {postedDate
+                ? new Date(postedDate).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })
+                : `May 12 2026`}
+            </span>
           </p>
         </Card>
       </div>

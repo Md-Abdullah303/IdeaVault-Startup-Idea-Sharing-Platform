@@ -8,9 +8,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
+import "swiper/css/pagination";
 
 // import required modules
-import { EffectCards, Autoplay } from "swiper/modules";
+import { EffectCards, Autoplay, Pagination } from "swiper/modules";
 import DataNotFoundPage from "../Ui/DataNotFoundPage";
 
 const FeaturedPage = ({ featuredData }) => {
@@ -19,19 +20,20 @@ const FeaturedPage = ({ featuredData }) => {
     <div className="w-[90%] md:w-[70%] mx-auto py-15">
       <h1 className="text-2xl md:text-4xl font-bold">Top Ideas</h1>
       {/* featured card */}
-      <div className="mt-10">
+      <div className="mt-10 overflow-hidden">
         {featuredData.length == 0 ? (
           <DataNotFoundPage />
         ) : (
           <Swiper
             effect={"cards"}
             loop={true}
+            pagination
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
             grabCursor={true}
-            modules={[EffectCards, Autoplay]}
+            modules={[EffectCards, Autoplay, Pagination]}
             className="mySwiper"
           >
             {featuredData.map((data) => (
