@@ -2,11 +2,20 @@
 import { addIdeas } from "@/lib/getData/data";
 import { Button, Input, Label, TextArea } from "@heroui/react";
 import React from "react";
+import toast from "react-hot-toast";
 
 const AddIdeasForm = () => {
+  const validateImageURL = (url) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+    });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
 
     const ideaData = {
@@ -21,6 +30,14 @@ const AddIdeasForm = () => {
       proposedSolution: formData.get("proposedSolution"),
       detailedDescription: formData.get("detailedDescription"),
     };
+
+    const imageURL = ideaData.image;
+    const isValid = await validateImageURL(imageURL);
+
+    if (!isValid) {
+      toast.error("Image URL is not valid. Please provide a correct URL.");
+      return;
+    }
 
     console.log(ideaData);
     const res = await addIdeas(ideaData);

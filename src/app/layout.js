@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/sheard/Navbar";
 import { ThemeProvider } from "next-themes";
 import Footer from "@/components/sheard/Footer";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="dark:bg-[#222831]">{children}</main>
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
