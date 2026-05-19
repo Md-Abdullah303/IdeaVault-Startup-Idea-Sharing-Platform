@@ -13,7 +13,7 @@ const IdeasPage = async ({ searchParams }) => {
   const search = sParams?.search || "";
   const category = sParams?.filter || "";
   const shorting = sParams?.shorting || "";
-  console.log(search, category, shorting);
+  // console.log(search, category, shorting);
   const allIdeas = await getAllIdeas(search, category, shorting);
   // console.log(sParams);
 

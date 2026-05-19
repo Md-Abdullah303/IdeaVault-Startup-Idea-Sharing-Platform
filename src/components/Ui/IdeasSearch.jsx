@@ -57,15 +57,22 @@ const IdeasSearch = () => {
             <Dropdown.Popover>
               <Dropdown.Menu
                 onAction={(key) => {
-                  setCategory(key);
-                  console.log(key);
+                  if (key === "All") {
+                    setCategory("");
+                  } else {
+                    setCategory(key);
+                  }
+                  //   console.log(key);
                   const params = new URLSearchParams(searchParams.toString());
-                  console.log(params);
+                  //   console.log(params);
                   params.set("filter", key);
 
                   router.push(`/ideas?${params.toString()}`);
                 }}
               >
+                <Dropdown.Item id="" textValue="All">
+                  <Label>All</Label>
+                </Dropdown.Item>
                 <Dropdown.Item id="Tech" textValue="Tech">
                   <Label>Tech</Label>
                 </Dropdown.Item>
@@ -90,12 +97,16 @@ const IdeasSearch = () => {
               aria-label="Menu"
               variant="secondary"
             >
-              {shorting || "Shorted By"} <IoMdArrowDropdown />
+              {shorting || "Price"} <IoMdArrowDropdown />
             </Button>
             <Dropdown.Popover>
               <Dropdown.Menu
                 onAction={(key) => {
-                  setShorting(key);
+                  if (key === "Normal") {
+                    setShorting("");
+                  } else {
+                    setShorting(key);
+                  }
 
                   const params = new URLSearchParams(window.location.search);
                   params.set("shorting", key);
@@ -103,6 +114,9 @@ const IdeasSearch = () => {
                   router.push(`/ideas?${params.toString()}`);
                 }}
               >
+                <Dropdown.Item id="" textValue="Normal">
+                  <Label>Normal</Label>
+                </Dropdown.Item>
                 <Dropdown.Item id="highToLow" textValue="highToLow">
                   <Label>high to low</Label>
                 </Dropdown.Item>

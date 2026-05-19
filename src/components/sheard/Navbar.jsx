@@ -18,8 +18,6 @@ export default function Navbar() {
     isPending, //loading state
   } = authClient.useSession();
   const userData = session?.user;
-  // console.log("session", session?.user);
-  // console.log("isPending", isPending);
 
   const tabs = [
     { href: "/", name: "Home" },
@@ -78,13 +76,23 @@ export default function Navbar() {
         <div className="">
           <ul className="flex items-center  gap-1">
             <SwithThemeBtn />
-            {/* <UserProfileDropdown /> */}
-            <li>
-              <MyNavLink href={"/login"}>Login</MyNavLink>
-            </li>
-            <li>
-              <MyNavLink href={"/register"}>Register</MyNavLink>
-            </li>
+
+            {isPending ? (
+              "Loading profile..."
+            ) : userData ? (
+              <div className="">
+                <UserProfileDropdown userData={userData} />
+              </div>
+            ) : (
+              <ul className="flex items-center gap-1">
+                <li>
+                  <MyNavLink href={"/login"}>Login</MyNavLink>
+                </li>
+                <li>
+                  <MyNavLink href={"/register"}>Register</MyNavLink>
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
       </header>

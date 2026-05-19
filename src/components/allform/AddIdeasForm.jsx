@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { addIdeas } from "@/lib/getData/data";
 import { Button, Input, Label, TextArea } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -7,6 +8,16 @@ import toast from "react-hot-toast";
 
 const AddIdeasForm = () => {
   const router = useRouter();
+
+  // Get User Data
+  const {
+    data: session,
+    isPending, //loading state
+  } = authClient.useSession();
+  const userData = session?.user;
+  // console.log(userData);
+
+  // validateImageURL
   const validateImageURL = (url) => {
     return new Promise((resolve) => {
       const img = new Image();
@@ -32,6 +43,13 @@ const AddIdeasForm = () => {
       proposedSolution: formData.get("proposedSolution"),
       detailedDescription: formData.get("detailedDescription"),
       postedDate: new Date(),
+      userId: userData.id,
+      userUpdatedAt: userData.updatedAt,
+      userCreatedAt: userData.createdAt,
+      userImage: userData.image,
+      userEmailVerified: userData.emailVerified,
+      userEmail: userData.email,
+      userName: userData.name,
     };
 
     const imageURL = ideaData.image;

@@ -1,20 +1,61 @@
-import { Button, Card, Chip } from "@heroui/react";
+import { Avatar, Button, Card, Chip, ToggleButton } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import IdeasPostEdit from "./IdeasPostEdit";
+import { Heart } from "@gravity-ui/icons";
 
 const IdeasPageCard = ({ idea }) => {
-  //   console.log(idea);
-  const { _id, image, category, tag, shortDescription, title } = idea;
+  // console.log(idea);
+  const {
+    _id,
+    image,
+    userName,
+    userImage,
+    postedDate,
+    category,
+    tag,
+    shortDescription,
+    title,
+  } = idea;
   console.log(image);
   return (
-    <Card className="rounded-[15px] p-0 flex flex-col gap-4 items-start overflow-hidden h-full">
+    <Card className="rounded-[7px] p-3 flex flex-col gap-4 items-start overflow-hidden h-full">
+      {/* posted user data */}
+      <div className="px-3 pt-3 border-b w-full pb-2 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Avatar size="md">
+            <Avatar.Image alt={userName} src={userImage} />
+            <Avatar.Fallback delayMs={600}>
+              {userName.toUpperCase()[(0, 2)]}
+            </Avatar.Fallback>
+          </Avatar>
+          <div className="flex flex-col gap-1.5">
+            <p className="text-lg leading-5 font-medium">{userName}</p>
+            <p className="text-md leading-none text-muted">
+              {new Date(postedDate).toLocaleTimeString()}
+            </p>
+          </div>
+        </div>
+        <IdeasPostEdit _id={_id} />
+      </div>
+      {/* card info */}
+      <div className="flex-1 ">
+        <h1>
+          {shortDescription}
+          <Link href={`/ideas/${_id}`} className="text-green-400">
+            ...See more
+          </Link>
+        </h1>
+      </div>
+      {/* card img and chip */}
       <div className="relative">
         <img
           src={image}
           alt={title}
           width={4000}
           height={2000}
-          className="h-80 object-center object-cover"
+          className="h-80 rounded-xl object-center object-cover"
         />
         <Chip
           color="accent"
@@ -23,15 +64,11 @@ const IdeasPageCard = ({ idea }) => {
           {category}
         </Chip>
       </div>
-      {/* card info */}
-      <div className="flex-1 flex gap-2.5 flex-col items-start px-3 pb-5">
-        <div className="space-y-3 flex-1">
-          <div className="flex items-start gap-4 ">
-            <h1 className="text-2xl font-bold">{title}</h1>
-            {tag && <Chip color="success">{tag}</Chip>}
-          </div>
-          <p className="line-clamp-2 text-gray-400">{shortDescription}</p>
-        </div>
+      <div className="flex items-center gap-2.5">
+        <ToggleButton>
+          <Heart />
+          Like
+        </ToggleButton>
         <Link className="" href={`/ideas/${_id}`}>
           <Button variant="outline">View Details</Button>
         </Link>
