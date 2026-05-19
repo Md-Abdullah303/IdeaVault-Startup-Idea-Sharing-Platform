@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const FeaturedCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const {
     _id,
     image,

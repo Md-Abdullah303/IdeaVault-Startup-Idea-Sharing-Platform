@@ -15,7 +15,7 @@ import { EffectCards, Autoplay, Pagination } from "swiper/modules";
 import DataNotFoundPage from "../Ui/DataNotFoundPage";
 
 const FeaturedPage = ({ featuredData }) => {
-  console.log(featuredData);
+  // console.log(featuredData);
   return (
     <div className="w-[90%] md:w-[70%] mx-auto py-15">
       <h1 className="text-2xl md:text-4xl font-bold">Top Ideas</h1>

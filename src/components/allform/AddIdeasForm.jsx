@@ -24,7 +24,7 @@ const AddIdeasForm = () => {
       title: formData.get("title"),
       shortDescription: formData.get("shortDescription"),
       tag: formData.get("tag") || null,
-      estimatedBudget: formData.get("estimatedBudget") || null,
+      estimatedBudget: Number(formData.get("estimatedBudget")) || null,
       targetAudience: formData.get("targetAudience"),
       category: formData.get("category"),
       image: formData.get("image"),

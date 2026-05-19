@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -8,14 +9,17 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const [showPass, setShowPass] = useState(false);
-  const onSubmit = (e) => {
+  const [showPass2, setShowPass2] = useState(false);
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
@@ -26,11 +30,27 @@ const RegisterForm = () => {
     }
 
     console.log(userData);
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name, // required
+      email: userData.email, // required
+      password: userData.password, // required
+      image: userData.image,
+      callbackURL: "/",
+    });
+    console.log("data , error", data, error);
+    if (error) {
+      toast.error(error?.message);
+    } else if (data) {
+      router.push("/");
+      router.refresh("/");
+      toast.success("Register Successful!");
+    }
   };
   return (
     <div className=" flex flex-col items-center">
       <form
-        className="flex mx-auto mt-10 max-w-120 border p-3 rounded-lg flex-col gap-4"
+        className="flex mx-auto mt-10 max-w-140 border p-3 rounded-lg flex-col gap-4 dark:bg-[#2e3642]"
         onSubmit={onSubmit}
       >
         {/* name */}
@@ -127,7 +147,7 @@ const RegisterForm = () => {
           isRequired
           minLength={6}
           name="confirmPass"
-          type={`${showPass ? "text" : "password"}`}
+          type={`${showPass2 ? "text" : "password"}`}
           validate={(value) => {
             if (value.length < 6) {
               return "Password must be at least 6 characters";
@@ -151,12 +171,12 @@ const RegisterForm = () => {
             />
             {showPass ? (
               <IoEyeOutline
-                onClick={() => setShowPass(!showPass)}
+                onClick={() => setShowPass2(!showPass2)}
                 className="absolute top-2 right-3 cursor-pointer"
               />
             ) : (
               <IoEyeOffOutline
-                onClick={() => setShowPass(!showPass)}
+                onClick={() => setShowPass2(!showPass2)}
                 className="absolute top-2 right-3 cursor-pointer"
               />
             )}

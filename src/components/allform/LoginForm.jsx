@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -8,20 +9,33 @@ import {
   TextField,
 } from "@heroui/react";
 import React from "react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const LoginForm = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     // console.log(userData);
+
+    const { data, error } = await authClient.signIn.email({
+      email: userData.email, // required
+      password: userData.password, // required
+      callbackURL: "/",
+    });
+    console.log(data, error);
+    if (error) {
+      toast.error(error?.message);
+    } else if (data) {
+      toast.success("Login Successful!");
+    }
   };
 
   return (
     <div>
       <form
-        className="flex mx-auto mt-10 max-w-120  border p-3 rounded-lg flex-col gap-4"
+        className="flex mx-auto dark:bg-[#2e3642] mt-10 max-w-120  border p-3 rounded-lg flex-col gap-4"
         onSubmit={onSubmit}
       >
         {/* email */}

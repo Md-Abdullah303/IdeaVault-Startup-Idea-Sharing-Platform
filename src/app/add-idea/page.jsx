@@ -9,7 +9,7 @@ export const metadata = {
 
 const AddIdeasPage = () => {
   return (
-    <div className="w-[90%] md:container mx-auto pt-10 pb-15">
+    <div className="w-[90%] md:w-[70%] mx-auto pt-10 pb-15">
       <div className="space-y-2">
         <h1 className="text-xl md:text-3xl font-bold">
           Submit your Startup Ideas

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Link } from "@heroui/react";
 import logo from "@/assest/logo.png";
 import { RiMenuAddLine, RiMenuUnfold2Line } from "react-icons/ri";
 import MyNavLink from "../Ui/MyNavLink";
@@ -8,10 +7,19 @@ import Image from "next/image";
 import SwithThemeBtn from "../Ui/SwithThemeBtn";
 import { useTheme } from "next-themes";
 import LogoLinkBtn from "../Ui/LogoLinkBtn";
+import { authClient } from "@/lib/auth-client";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const {
+    data: session,
+    isPending, //loading state
+  } = authClient.useSession();
+  const userData = session?.user;
+  // console.log("session", session?.user);
+  // console.log("isPending", isPending);
 
   const tabs = [
     { href: "/", name: "Home" },
@@ -66,9 +74,11 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
+        {/* right side */}
         <div className="">
           <ul className="flex items-center  gap-1">
             <SwithThemeBtn />
+            {/* <UserProfileDropdown /> */}
             <li>
               <MyNavLink href={"/login"}>Login</MyNavLink>
             </li>

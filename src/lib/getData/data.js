@@ -1,6 +1,14 @@
 "use server";
-const getAllIdeas = async () => {
-  const res = await fetch(`${process.env.SERVER_URL}/ideas`);
+const getAllIdeas = async (search = "", category = "", shorting = "") => {
+  const params = new URLSearchParams();
+  if (search) params.append("search", search);
+  if (category) params.append("filter", category);
+  if (shorting) params.append("shorting", shorting);
+  console.log(`${process.env.SERVER_URL}/ideas?${params.toString()}`);
+
+  const res = await fetch(
+    `${process.env.SERVER_URL}/ideas?${params.toString()}`,
+  );
   const data = await res.json();
   return data || [];
 };

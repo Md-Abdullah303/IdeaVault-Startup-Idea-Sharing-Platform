@@ -1,5 +1,6 @@
 import DataNotFoundPage from "@/components/Ui/DataNotFoundPage";
 import IdeasPageCard from "@/components/Ui/IdeasPageCard";
+import IdeasSearch from "@/components/Ui/IdeasSearch";
 import getAllIdeas from "@/lib/getData/data";
 import { FcIdea } from "react-icons/fc";
 
@@ -7,15 +8,22 @@ export const metadata = {
   title: "Ideas - IdeaVault",
 };
 
-const IdeasPage = async () => {
-  const allIdeas = await getAllIdeas();
-  // console.log(allIdeas);
+const IdeasPage = async ({ searchParams }) => {
+  const sParams = await searchParams;
+  const search = sParams?.search || "";
+  const category = sParams?.filter || "";
+  const shorting = sParams?.shorting || "";
+  console.log(search, category, shorting);
+  const allIdeas = await getAllIdeas(search, category, shorting);
+  // console.log(sParams);
 
   return (
-    <div className="w-[90%] md:container mx-auto pt-15 space-y-4 pb-20">
+    <div className="w-[90%] md:w-[80%] mx-auto pt-15 space-y-4 pb-20">
       <h1 className="flex items-center gap-1 text-2xl sm:text-3xl md:text-5xl font-bold ">
         <FcIdea /> All Ideas
       </h1>
+
+      <IdeasSearch />
 
       <div className=" mt-10 ">
         {allIdeas.length === 0 ? (
