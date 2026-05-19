@@ -3,8 +3,16 @@ import React from "react";
 import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const UserProfileDropdown = ({ userData }) => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push("/");
+  };
+
   // console.log(userData);
   const { name, email, image } = userData;
   return (
@@ -12,7 +20,18 @@ const UserProfileDropdown = ({ userData }) => {
       <Dropdown>
         <Dropdown.Trigger className="rounded-full">
           <Avatar>
-            <Avatar.Image alt={name} src={image} />
+            <Avatar.Image
+              className="bg-center bg-cover"
+              alt={name}
+              src={image}
+            />
+            {/* <Image
+              width={600}
+              height={500}
+              className="bg-center bg-cover w-full rounded-full"
+              alt={name}
+              src={image}
+            /> */}
             <Avatar.Fallback delayMs={600}>
               {name.toUpperCase()[(0, 2)]}
             </Avatar.Fallback>
@@ -38,7 +57,7 @@ const UserProfileDropdown = ({ userData }) => {
               <Label>Profile</Label>
             </Dropdown.Item>
             <Dropdown.Item
-              onClick={async () => await authClient.signOut()}
+              onClick={handleLogout}
               id="logout"
               textValue="Logout"
               variant="danger"

@@ -38,4 +38,11 @@ export const addIdeas = async (newIdea) => {
   return data;
 };
 
+export const getUserIdeas = async (userId) => {
+  const res = await fetch(`${process.env.SERVER_URL}/my-ideas/${userId}`);
+  const data = await res.json();
+  console.log(res, data);
+  return data || [];
+};
+
 export default getAllIdeas;

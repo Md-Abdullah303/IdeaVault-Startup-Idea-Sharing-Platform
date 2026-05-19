@@ -33,7 +33,20 @@ const IdeasPageCard = ({ idea }) => {
           <div className="flex flex-col gap-1.5">
             <p className="text-lg leading-5 font-medium">{userName}</p>
             <p className="text-md leading-none text-muted">
-              {new Date(postedDate).toLocaleTimeString()}
+              <span>
+                {new Date(postedDate).toLocaleDateString("en-BD", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </span>
+              <span>
+                ,{" "}
+                {new Date(postedDate).toLocaleTimeString("en-BD", {
+                  minute: "numeric",
+                  hour: "numeric",
+                })}
+              </span>
             </p>
           </div>
         </div>

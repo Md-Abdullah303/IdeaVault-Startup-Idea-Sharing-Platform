@@ -1,5 +1,6 @@
+import AddComment from "@/components/Ui/AddComment";
 import { getIdeasById } from "@/lib/getData/data";
-import { Card, Chip } from "@heroui/react";
+import { Avatar, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 
 const IdeasDetailsPage = async ({ params }) => {
@@ -19,6 +20,9 @@ const IdeasDetailsPage = async ({ params }) => {
     proposedSolution,
     detailedDescription,
     postedDate,
+    userName,
+    userEmail,
+    userImage,
   } = idea;
 
   return (
@@ -33,14 +37,25 @@ const IdeasDetailsPage = async ({ params }) => {
             className=" w-full h-full bg-cover bg-center rounded-lg overflow-hidden"
           />
         </div>
-        <Card className="rounded-[14px] p-4 border items-start gap-4 justify-center">
+        <Card className="rounded-[14px] p-4 border items-start gap-2.5 justify-center">
+          {/* user info */}
+          <div className=" border-b pb-3 w-full flex items-center gap-4">
+            <Avatar size="md">
+              <Avatar.Image alt={userName} src={userImage} />
+              <Avatar.Fallback>{userName.toUpperCase()[0]}</Avatar.Fallback>
+            </Avatar>
+            <div className="space-y-1">
+              <h1 className="text-xl font-bold">{userName}</h1>
+              <p className="text-gray-400">{userEmail}</p>
+            </div>
+          </div>
           <Chip color="success" className="text-2xl py-2 px-4">
             {tag}
           </Chip>
-          <h1 className="text-3xl md:text-6xl font-bold line-clamp-2">
+          <h1 className="text-xl md:text-4xl font-bold line-clamp-2">
             {title}
           </h1>
-          <p className="text-xl md:text-3xl font-semibold line-clamp-2">
+          <p className="text-lg md:text-xl font-semibold line-clamp-2">
             {shortDescription}
           </p>
           <p className="text-xl text-gray-400 md:text-3xl grid grid-cols-2 gap-2 w-full">
@@ -88,6 +103,7 @@ const IdeasDetailsPage = async ({ params }) => {
           <span className="text-lg text-gray-400">{detailedDescription}</span>
         </p>
       </div>
+      <AddComment />
     </div>
   );
 };
