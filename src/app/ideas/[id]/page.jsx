@@ -1,5 +1,5 @@
 import AddComment from "@/components/Ui/AddComment";
-import { getIdeasById } from "@/lib/getData/data";
+import { getCommentByPostId, getIdeasById } from "@/lib/getData/data";
 import { Avatar, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 
@@ -24,6 +24,8 @@ const IdeasDetailsPage = async ({ params }) => {
     userEmail,
     userImage,
   } = idea;
+
+  const comments = await getCommentByPostId(idea._id);
 
   return (
     <div className="w-[90%] md:w-[70%] mx-auto pt-15 pb-20">
@@ -103,7 +105,7 @@ const IdeasDetailsPage = async ({ params }) => {
           <span className="text-lg text-gray-400">{detailedDescription}</span>
         </p>
       </div>
-      <AddComment />
+      <AddComment comments={comments} idea={idea} />
     </div>
   );
 };

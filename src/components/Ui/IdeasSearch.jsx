@@ -33,7 +33,7 @@ const IdeasSearch = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          placeholder="Search"
+          placeholder="Search by title"
           className="py-2 lg:w-120 md:w-80 sm:w-60 w-55 px-4 outline-none text-gray-400"
         />
         <button

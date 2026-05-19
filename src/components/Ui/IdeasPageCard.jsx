@@ -18,7 +18,7 @@ const IdeasPageCard = ({ idea }) => {
     shortDescription,
     title,
   } = idea;
-  console.log(image);
+  // console.log(image);
   return (
     <Card className="rounded-[7px] p-3 flex flex-col gap-4 items-start overflow-hidden h-full">
       {/* posted user data */}
@@ -54,6 +54,7 @@ const IdeasPageCard = ({ idea }) => {
       </div>
       {/* card info */}
       <div className="flex-1 ">
+        <h1 className="line-clamp-1 text-xl font-bold">{title}</h1>
         <h1>
           {shortDescription}
           <Link href={`/ideas/${_id}`} className="text-green-400">

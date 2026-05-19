@@ -38,6 +38,24 @@ export const addIdeas = async (newIdea) => {
   return data;
 };
 
+export const postComment = async (newComment) => {
+  const res = await fetch(`${process.env.SERVER_URL}/comment`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(newComment),
+  });
+  const data = await res.json();
+  return data;
+};
+
+export const getCommentByPostId = async (postId) => {
+  const res = await fetch(`${process.env.SERVER_URL}/comment/${postId}`);
+  const data = await res.json();
+  return data;
+};
+
 export const getUserIdeas = async (userId) => {
   const res = await fetch(`${process.env.SERVER_URL}/my-ideas/${userId}`);
   const data = await res.json();
