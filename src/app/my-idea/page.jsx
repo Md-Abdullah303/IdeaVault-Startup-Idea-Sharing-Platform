@@ -18,7 +18,7 @@ const MyIdeaPage = async () => {
   return (
     <div className="w-[90%] md:w-[80%] px-3 mx-auto pt-15 pb-20">
       <div className=" text-center space-y-3 px-3">
-        <h1 className="text-2xl md:text-5xl font-bold font-banner">My Ideas</h1>
+        <h1 className="text-3xl md:text-5xl font-bold font-banner">My Ideas</h1>
         <p className="text-gray-400 text-lg md:text-xl">
           Manage, explore, and track all the innovative ideas you have shared on
           IdeaVault.

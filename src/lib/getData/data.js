@@ -56,6 +56,12 @@ export const getCommentByPostId = async (postId) => {
   return data;
 };
 
+export const getCommentByUserId = async (userId) => {
+  const res = await fetch(`${process.env.SERVER_URL}/comment/user/${userId}`);
+  const data = await res.json();
+  return data || [];
+};
+
 export const getUserIdeas = async (userId) => {
   const res = await fetch(`${process.env.SERVER_URL}/my-ideas/${userId}`);
   const data = await res.json();
