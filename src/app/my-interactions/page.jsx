@@ -22,7 +22,14 @@ const MyInteractionsPage = async () => {
         <p className="text-gray-500">Edit and Delete your interactions</p>
       </div>
 
-      <div className="space-y-3.5">
+      <div
+        className={`space-y-3.5 
+          ${userComments.length === 1 && "mb-[35vh]"}
+          ${userComments.length === 2 && "mb-[30vh]"}
+          ${userComments.length === 3 && "mb-[28vh]"}
+          ${userComments.length === 4 && "mb-[24vh]"}
+          `}
+      >
         <small className="text-gray-400 ">UP NEXT({userComments.length})</small>
         {userComments.length === 0 ? (
           <NoInteractionsFound />
