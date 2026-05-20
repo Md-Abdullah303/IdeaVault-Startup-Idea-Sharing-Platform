@@ -10,6 +10,7 @@ import "swiper/css/autoplay";
 
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
+import Link from "next/link";
 
 const Banner = () => {
   const bannerSlides = [
@@ -65,7 +66,9 @@ const Banner = () => {
                 <p className="text-xl md:text-3xl text-gray-500">
                   {item.description}
                 </p>
-                <Button className={"rounded-xs "}>Explore Ideas</Button>
+                <Link href={"/ideas"}>
+                  <Button className={"rounded-xs "}>Explore Ideas</Button>
+                </Link>
               </div>
             </div>
           </div>

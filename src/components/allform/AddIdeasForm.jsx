@@ -16,7 +16,7 @@ const AddIdeasForm = () => {
     isPending, //loading state
   } = authClient.useSession();
   const userData = session?.user;
-  // console.log(userData);
+  console.log(userData);
 
   // validateImageURL
   const validateImageURL = (url) => {
@@ -130,7 +130,7 @@ const AddIdeasForm = () => {
                 name="estimatedBudget"
                 className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
                 id="name"
-                placeholder="Enter Estimated Budget (USD)"
+                placeholder={`Do't allowed (,) and any symbol`}
                 type="text"
               />
             </div>

@@ -1,6 +1,8 @@
 import AddComment from "@/components/Ui/AddComment";
+import { auth } from "@/lib/auth";
 import { getCommentByPostId, getIdeasById } from "@/lib/getData/data";
 import { Avatar, Card, Chip } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 const IdeasDetailsPage = async ({ params }) => {
@@ -24,6 +26,17 @@ const IdeasDetailsPage = async ({ params }) => {
     userEmail,
     userImage,
   } = idea;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const userData = session?.user;
+  console.log(session);
+
+  const token = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
 
   const comments = await getCommentByPostId(idea._id);
 

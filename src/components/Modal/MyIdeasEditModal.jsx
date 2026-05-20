@@ -107,7 +107,7 @@ export function MyIdeasEditModal({ ideas }) {
 
                     {/* Proposed Solution */}
                     <div className="">
-                      d<Label className="text-lg">Proposed Solution</Label>
+                      <Label className="text-lg">Proposed Solution</Label>
                       <TextArea
                         defaultValue={ideas?.proposedSolution}
                         required

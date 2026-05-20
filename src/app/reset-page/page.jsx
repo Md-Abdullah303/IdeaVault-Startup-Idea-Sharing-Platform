@@ -29,7 +29,7 @@ const ResetPage = () => {
   };
 
   return (
-    <div className="w-[90%] px-3 md:w-[70%] mx-auto mt-20 mb-15">
+    <div className="w-[90%] px-3 md:w-[70%] mx-auto mt-20 mb-25">
       <h2 className="text-2xl text-center font-bold">
         Create Your New Password
       </h2>

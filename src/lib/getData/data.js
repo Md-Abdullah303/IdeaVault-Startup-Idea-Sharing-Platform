@@ -1,4 +1,5 @@
 "use server";
+
 const getAllIdeas = async (search = "", category = "", shorting = "") => {
   const params = new URLSearchParams();
   if (search) params.append("search", search);

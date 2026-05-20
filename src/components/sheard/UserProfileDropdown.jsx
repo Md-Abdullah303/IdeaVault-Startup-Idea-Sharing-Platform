@@ -5,12 +5,17 @@ import { Avatar, Dropdown, Label } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 const UserProfileDropdown = ({ userData }) => {
   const router = useRouter();
   const handleLogout = async () => {
     await authClient.signOut();
     router.push("/");
+  };
+
+  const handleProfile = () => {
+    router.push("/profile");
   };
 
   // console.log(userData);
@@ -37,7 +42,7 @@ const UserProfileDropdown = ({ userData }) => {
             </Avatar.Fallback>
           </Avatar>
         </Dropdown.Trigger>
-        <Dropdown.Popover className={"space-y-3"}>
+        <Dropdown.Popover className={"space-y-3 -ml-5"}>
           <div className="px-3 pt-3 pb-1">
             <div className="flex items-center gap-2">
               <Avatar size="sm">
@@ -53,8 +58,12 @@ const UserProfileDropdown = ({ userData }) => {
             </div>
           </div>
           <Dropdown.Menu className="space-y-3 px-3">
-            <Dropdown.Item id="profile" textValue="Profile">
-              <Label>Profile</Label>
+            <Dropdown.Item
+              onClick={handleProfile}
+              id="profile"
+              textValue="Profile"
+            >
+              <Label className="w-full">Profile</Label>
             </Dropdown.Item>
             <Dropdown.Item
               onClick={handleLogout}

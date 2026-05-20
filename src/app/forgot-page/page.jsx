@@ -19,7 +19,7 @@ const ForgotPage = () => {
   };
 
   return (
-    <div className="w-[90%] px-3 md:w-[70%] mx-auto mt-20 mb-15">
+    <div className="w-[90%] px-3 md:w-[70%] mx-auto mt-20 mb-50">
       <div className="text-center space-y-2">
         <h1 className="text-blue-500 text-2xl font-bold">Forgot Password</h1>
         <p className="text-lg text-center text-gray-500">
