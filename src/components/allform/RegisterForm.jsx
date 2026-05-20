@@ -47,6 +47,14 @@ const RegisterForm = () => {
       toast.success("Register Successful!");
     }
   };
+
+  const handleGoogleRegister = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    // console.log(data);
+  };
+
   return (
     <div className=" flex flex-col items-center">
       <form
@@ -197,7 +205,11 @@ const RegisterForm = () => {
           <p className="text-gray-500">Or</p>
           <hr className="w-[43%]" />
         </div>
-        <Button variant="outline" className={"w-full rounded-xs"}>
+        <Button
+          onClick={handleGoogleRegister}
+          variant="outline"
+          className={"w-full rounded-xs"}
+        >
           <FcGoogle />
           Google Register
         </Button>

@@ -8,6 +8,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import React from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -30,6 +31,13 @@ const LoginForm = () => {
     } else if (data) {
       toast.success("Login Successful!");
     }
+  };
+
+  const handleGoogleLogin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    // console.log(data);
   };
 
   return (
@@ -91,6 +99,9 @@ const LoginForm = () => {
           </Description>
           <FieldError />
         </TextField>
+        <div className="text-blue-400 text-end">
+          <Link href={"/forgot-page"}>Forgot password?</Link>
+        </div>
         <div className="flex gap-2">
           <Button className={"w-full rounded-xs"} type="submit">
             Login
@@ -104,7 +115,11 @@ const LoginForm = () => {
           <p className="text-gray-500">Or</p>
           <hr className="w-[43%]" />
         </div>
-        <Button variant="outline" className={"w-full rounded-xs"}>
+        <Button
+          onClick={handleGoogleLogin}
+          variant="outline"
+          className={"w-full rounded-xs"}
+        >
           <FcGoogle />
           Google login
         </Button>
