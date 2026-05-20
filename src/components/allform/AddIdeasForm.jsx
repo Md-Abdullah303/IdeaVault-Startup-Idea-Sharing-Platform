@@ -184,7 +184,7 @@ const AddIdeasForm = () => {
           <div className="grid grid-cols-2 gap-3.5">
             {/* Problem Statement */}
             <div className="">
-              <Label className="text-xl">Problem Statement</Label>
+              <Label className="text-lg">Problem Statement</Label>
 
               <TextArea
                 required
@@ -197,7 +197,7 @@ const AddIdeasForm = () => {
 
             {/* Proposed Solution */}
             <div className="">
-              <Label className="text-xl">Proposed Solution</Label>
+              <Label className="text-lg">Proposed Solution</Label>
 
               <TextArea
                 required

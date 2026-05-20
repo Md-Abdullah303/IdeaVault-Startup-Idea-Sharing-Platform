@@ -63,9 +63,11 @@ const IdeasDetailsPage = async ({ params }) => {
           <p className="text-xl text-gray-400 md:text-3xl grid grid-cols-2 gap-2 w-full">
             <span>Estimated Budget :</span>{" "}
             <span>
-              {estimatedBudget[0] == "$"
-                ? estimatedBudget
-                : `$${estimatedBudget}`}
+              {typeof estimatedBudget == "number"
+                ? estimatedBudget[0] == "$"
+                  ? estimatedBudget
+                  : `$${estimatedBudget}`
+                : "Not Type a Number"}
             </span>
           </p>
           <p className="text-gray-400 text-xl md:text-3xl grid grid-cols-2 gap-2 w-full">

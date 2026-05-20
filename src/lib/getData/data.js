@@ -65,8 +65,31 @@ export const getCommentByUserId = async (userId) => {
 export const getUserIdeas = async (userId) => {
   const res = await fetch(`${process.env.SERVER_URL}/my-ideas/${userId}`);
   const data = await res.json();
-  console.log(res, data);
+  // console.log(res, data);
   return data || [];
+};
+
+export const updateIdea = async (_id, updatedIdea) => {
+  const res = await fetch(`${process.env.SERVER_URL}/ideas/${_id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(updatedIdea),
+  });
+  const data = await res.json();
+  return data;
+};
+
+export const deleteIdea = async (_id) => {
+  const res = await fetch(`${process.env.SERVER_URL}/ideas/${_id}`, {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  const data = await res.json();
+  return data;
 };
 
 export default getAllIdeas;

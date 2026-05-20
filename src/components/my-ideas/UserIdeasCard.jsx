@@ -4,6 +4,8 @@ import Image from "next/image";
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
+import { MyIdeasEditModal } from "../Modal/MyIdeasEditModal";
+import { DeleteIdeas } from "../Modal/MyIdeasDeleteModal";
 
 const UserIdeasCard = ({ ideas }) => {
   const {
@@ -85,12 +87,8 @@ const UserIdeasCard = ({ ideas }) => {
         </div>
         {/* edit and delete btn */}
         <div className="flex items-center gap-2">
-          <Button className={"rounded-xs"} variant="outline">
-            <FaEdit /> Edit
-          </Button>
-          <Button className={"rounded-xs"} variant="danger-soft">
-            <MdDeleteOutline /> Delete
-          </Button>
+          <MyIdeasEditModal ideas={ideas} />
+          <DeleteIdeas ideas={ideas} />
         </div>
       </div>
       {/* Ideas image */}
