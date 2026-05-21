@@ -54,7 +54,7 @@ export function MyIdeasEditModal({ ideas }) {
                       defaultValue={ideas?.title}
                       required
                       name="title"
-                      className="!bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:!border-[#282b33] dark:!bg-[#222831] outline-none"
+                      className="!bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:!border-gray-500 dark:!bg-gray-700 outline-none"
                       id="name"
                       placeholder="Enter your Idea"
                       type="text"
@@ -68,11 +68,75 @@ export function MyIdeasEditModal({ ideas }) {
                       defaultValue={ideas?.shortDescription}
                       required
                       name="shortDescription"
-                      className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                      className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
                       id="name"
                       placeholder="Short Description"
                       type="text"
                     />
+                  </div>
+
+                  {/* tags && Estimated Budget (optional) && Target Audience && Category */}
+                  <div className="grid grid-cols-2 gap-3.5">
+                    {/* Tags (optional) */}
+                    <div className="flex flex-col gap-1">
+                      <Label className="text-xl flex-1">Tags (optional)</Label>
+                      <Input
+                        defaultValue={ideas?.tag}
+                        name="tag"
+                        className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
+                        id="name"
+                        placeholder="Enter Ideas Tags"
+                        type="text"
+                      />
+                    </div>
+
+                    {/* Estimated Budget (optional) */}
+                    <div className="flex flex-col gap-1">
+                      <Label className="text-xl flex-1">
+                        Estimated Budget (optional)
+                      </Label>
+                      <Input
+                        defaultValue={ideas?.estimatedBudget}
+                        name="estimatedBudget"
+                        className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
+                        id="name"
+                        placeholder={`Do't allowed (,) and any symbol`}
+                        type="text"
+                      />
+                    </div>
+
+                    {/* Target Audience */}
+                    <div className="flex flex-col gap-1">
+                      <Label className="text-xl">Target Audience</Label>
+                      <Input
+                        defaultValue={ideas?.targetAudience}
+                        required
+                        name="targetAudience"
+                        className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
+                        id="name"
+                        placeholder="Target Audience"
+                        type="text"
+                      />
+                    </div>
+
+                    {/* Category */}
+                    <div className="flex flex-col items-start gap-1">
+                      <Label className="text-xl">Category</Label>
+                      <select
+                        defaultValue={ideas?.category}
+                        required
+                        name="category"
+                        className="border py-2 dark:!border-gray-500 dark:!bg-gray-700 px-3 w-full !bg-slate-100  border-gray-200 rounded-xs"
+                      >
+                        <option value="">Select Category</option>
+                        <option defaultChecked value="Tech">
+                          Tech
+                        </option>
+                        <option value="Health">Health</option>
+                        <option value="AI">AI</option>
+                        <option value="Education">Education</option>
+                      </select>
+                    </div>
                   </div>
 
                   {/* imageUrl */}
@@ -82,7 +146,7 @@ export function MyIdeasEditModal({ ideas }) {
                       defaultValue={ideas?.image}
                       required
                       name="image"
-                      className="!bg-slate-100 dark:!border-[#282b33] dark:!bg-[#222831] border shadow-none border-gray-200 rounded-xs outline-none"
+                      className="!bg-slate-100 dark:!border-gray-500 dark:!bg-gray-700 border shadow-none border-gray-200 rounded-xs outline-none"
                       id="name"
                       placeholder="Enter ImageURL"
                       type="text"
@@ -100,7 +164,7 @@ export function MyIdeasEditModal({ ideas }) {
                         required
                         name="problemStatement"
                         aria-label="Quick project update"
-                        className="h-32 dark:!border-[#282b33] dark:!bg-[#222831] w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+                        className="h-32 dark:!border-gray-500 dark:!bg-gray-700 w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
                         placeholder="Problem Statement"
                       />
                     </div>
@@ -113,7 +177,7 @@ export function MyIdeasEditModal({ ideas }) {
                         required
                         name="proposedSolution"
                         aria-label="Quick project update"
-                        className="h-32 dark:!border-[#282b33] dark:!bg-[#222831] w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+                        className="h-32 dark:!border-gray-500 dark:!bg-gray-700 w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
                         placeholder="Proposed Solution"
                       />
                     </div>
@@ -128,7 +192,7 @@ export function MyIdeasEditModal({ ideas }) {
                       defaultValue={ideas?.detailedDescription}
                       name="detailedDescription"
                       aria-label="Quick project update"
-                      className="h-32 w-full dark:!border-[#282b33] dark:!bg-[#222831] !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+                      className="h-32 w-full dark:!border-gray-500 dark:!bg-gray-700 !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
                       placeholder="Detailed Description"
                     />
                   </div>

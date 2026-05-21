@@ -11,8 +11,12 @@ import "swiper/css/autoplay";
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const Banner = () => {
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
   const bannerSlides = [
     {
       id: 1,
@@ -37,6 +41,27 @@ const Banner = () => {
     },
   ];
 
+  useEffect(() => {
+    const animation = () => {
+      if (!titleRef.current) return;
+      // const element = textRef.current;
+      gsap.to(titleRef.current, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+      });
+
+      gsap.to(descRef.current, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+      });
+    };
+    animation();
+  }, []);
+
   return (
     <Swiper
       pagination={true}
@@ -60,10 +85,13 @@ const Banner = () => {
             {/* Banner info */}
             <div className="text-white grid grid-cols-3  font-banner relative w-[90%] md:w-[70%] mx-auto   z-30">
               <div className=" col-span-3 md:col-span-2 space-y-3.5">
-                <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold">
+                <h1
+                  ref={titleRef}
+                  className="text-4xl md:text-7xl lg:text-8xl font-bold"
+                >
                   {item.title}
                 </h1>
-                <p className="text-xl md:text-3xl text-gray-500">
+                <p ref={descRef} className="text-xl md:text-3xl text-gray-500">
                   {item.description}
                 </p>
                 <Link href={"/ideas"}>

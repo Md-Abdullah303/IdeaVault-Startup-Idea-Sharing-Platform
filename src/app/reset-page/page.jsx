@@ -60,7 +60,7 @@ const ResetPage = () => {
               value={inputSearch1}
               onChange={(e) => setInputSearch1(e.target.value)}
               className={
-                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-600 dark:!bg-[#222831] rounded-xs outline-none"
+                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-600 dark:!bg-gray-700 rounded-xs outline-none"
               }
               placeholder="Input your password "
             />
@@ -107,7 +107,7 @@ const ResetPage = () => {
               value={inputSearch2}
               onChange={(e) => setInputSearch2(e.target.value)}
               className={
-                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-600 dark:!bg-[#222831] rounded-xs outline-none"
+                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-600 dark:!bg-gray-700 rounded-xs outline-none"
               }
               placeholder="Input Your Password"
             />

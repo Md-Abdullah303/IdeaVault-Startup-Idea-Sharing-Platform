@@ -1,3 +1,4 @@
+import MyIntractionsH1 from "@/components/gsap/MyIntractionsH1";
 import InteractionsCart from "@/components/Ui/InteractionsCart";
 import NoInteractionsFound from "@/components/Ui/NoInteractionsFound";
 import { auth } from "@/lib/auth";
@@ -16,11 +17,8 @@ const MyInteractionsPage = async () => {
   const userComments = await getCommentByUserId(userData?.id);
   // console.log(userComments);
   return (
-    <div className="w-[90%] md:w-[80%] mx-auto pt-15 pb-20 space-y-7">
-      <div className="font-ibm space-y-2">
-        <h1 className="text-2xl md:text-4xl font-bold">My Interactions</h1>
-        <p className="text-gray-500">Edit and Delete your interactions</p>
-      </div>
+    <div className="w-[90%] md:w-[80%] mx-auto pt-15 pb-10 md:pb-20 space-y-7">
+      <MyIntractionsH1 />
 
       <div
         className={`space-y-3.5 
@@ -34,7 +32,7 @@ const MyInteractionsPage = async () => {
         {userComments.length === 0 ? (
           <NoInteractionsFound />
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
             {userComments.map((comment, ind) => (
               <InteractionsCart key={ind} comment={comment} />
             ))}

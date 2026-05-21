@@ -1,11 +1,31 @@
+"use client";
 import { Avatar, Button, Card, Chip, ToggleButton } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import IdeasPostEdit from "./IdeasPostEdit";
 import { Heart } from "@gravity-ui/icons";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const IdeasPageCard = ({ idea }) => {
+  const cardRef = useRef();
+
+  useEffect(() => {
+    const animation = () => {
+      gsap.from(cardRef.current, {
+        y: -25,
+        opacity: 0,
+        duration: 0.6,
+      });
+      gsap.to(cardRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+      });
+    };
+    animation();
+  }, []);
   // console.log(idea);
   const {
     _id,
@@ -20,7 +40,10 @@ const IdeasPageCard = ({ idea }) => {
   } = idea;
   // console.log(image);
   return (
-    <Card className="rounded-[7px] p-3 flex flex-col gap-4 items-start overflow-hidden h-full">
+    <Card
+      ref={cardRef}
+      className="rounded-[7px] dark-card hover:shadow-xl duration-300 hover:-translate-y-1 p-3 flex flex-col gap-4 items-start overflow-hidden h-full"
+    >
       {/* posted user data */}
       <div className="px-3 pt-3 border-b w-full pb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">

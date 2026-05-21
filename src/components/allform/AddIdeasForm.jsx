@@ -80,7 +80,7 @@ const AddIdeasForm = () => {
     <div>
       {userData ? (
         <form
-          className="border mt-5 max-w-xl py-3 px-5 rounded-lg bg-white dark:bg-[#3b4555] overflow-hidden space-y-4 mx-auto"
+          className="border mt-5 max-w-xl py-3 px-5 rounded-lg bg-white dark-form overflow-hidden space-y-4 mx-auto"
           onSubmit={onSubmit}
         >
           {/* idea title */}
@@ -89,7 +89,7 @@ const AddIdeasForm = () => {
             <Input
               required
               name="title"
-              className="!bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:!border-[#282b33] dark:!bg-[#222831] outline-none"
+              className="!bg-slate-100 border shadow-none border-gray-200 rounded-xs dark:!border-gray-500  dark:!bg-gray-700 outline-none"
               id="name"
               placeholder="Enter your Idea"
               type="text"
@@ -102,7 +102,7 @@ const AddIdeasForm = () => {
             <Input
               required
               name="shortDescription"
-              className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+              className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
               id="name"
               placeholder="Short Description"
               type="text"
@@ -113,10 +113,10 @@ const AddIdeasForm = () => {
           <div className="grid grid-cols-2 gap-3.5">
             {/* Tags (optional) */}
             <div className="flex flex-col gap-1">
-              <Label className="text-xl">Tags (optional)</Label>
+              <Label className="text-xl flex-1">Tags (optional)</Label>
               <Input
                 name="tag"
-                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
                 id="name"
                 placeholder="Enter Ideas Tags"
                 type="text"
@@ -125,10 +125,12 @@ const AddIdeasForm = () => {
 
             {/* Estimated Budget (optional) */}
             <div className="flex flex-col gap-1">
-              <Label className="text-xl">Estimated Budget (optional)</Label>
+              <Label className="text-xl flex-1">
+                Estimated Budget (optional)
+              </Label>
               <Input
                 name="estimatedBudget"
-                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
                 id="name"
                 placeholder={`Do't allowed (,) and any symbol`}
                 type="text"
@@ -137,11 +139,11 @@ const AddIdeasForm = () => {
 
             {/* Target Audience */}
             <div className="flex flex-col gap-1">
-              <Label className="text-xl">Target Audience</Label>
+              <Label className="text-xl flex-1">Target Audience</Label>
               <Input
                 required
                 name="targetAudience"
-                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                className="!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
                 id="name"
                 placeholder="Target Audience"
                 type="text"
@@ -150,11 +152,11 @@ const AddIdeasForm = () => {
 
             {/* Category */}
             <div className="flex flex-col items-start gap-1">
-              <Label className="text-xl">Category</Label>
+              <Label className="text-xl flex-1">Category</Label>
               <select
                 required
                 name="category"
-                className="border py-2 dark:!border-[#282b33] dark:!bg-[#222831] px-3 w-full !bg-slate-100  border-gray-200 rounded-xs"
+                className="border py-2 dark:!border-gray-500 dark:!bg-gray-700 px-3 w-full !bg-slate-100  border-gray-200 rounded-xs"
               >
                 <option value="">Select Category</option>
                 <option defaultChecked value="Tech">
@@ -173,7 +175,7 @@ const AddIdeasForm = () => {
             <Input
               required
               name="image"
-              className="!bg-slate-100 dark:!border-[#282b33] dark:!bg-[#222831] border shadow-none border-gray-200 rounded-xs outline-none"
+              className="!bg-slate-100 dark:!border-gray-500 dark:!bg-gray-700 border shadow-none border-gray-200 rounded-xs outline-none"
               id="name"
               placeholder="Enter ImageURL"
               type="text"
@@ -190,7 +192,7 @@ const AddIdeasForm = () => {
                 required
                 name="problemStatement"
                 aria-label="Quick project update"
-                className="h-32 dark:!border-[#282b33] dark:!bg-[#222831] w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+                className="h-32 dark:!border-gray-500 dark:!bg-gray-700 w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
                 placeholder="Problem Statement"
               />
             </div>
@@ -203,7 +205,7 @@ const AddIdeasForm = () => {
                 required
                 name="proposedSolution"
                 aria-label="Quick project update"
-                className="h-32 dark:!border-[#282b33] dark:!bg-[#222831] w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+                className="h-32 dark:!border-gray-500 dark:!bg-gray-700 w-full !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
                 placeholder="Proposed Solution"
               />
             </div>
@@ -217,7 +219,7 @@ const AddIdeasForm = () => {
               required
               name="detailedDescription"
               aria-label="Quick project update"
-              className="h-32 w-full dark:!border-[#282b33] dark:!bg-[#222831] !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
+              className="h-32 w-full dark:!border-gray-500 dark:!bg-gray-700 !bg-slate-100 border shadow-none border-gray-200 rounded-xs outline-none"
               placeholder="Detailed Description"
             />
           </div>

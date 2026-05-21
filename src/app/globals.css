@@ -22,6 +22,20 @@
   font-family: "M PLUS U", sans-serif;
 }
 
+.dark-primary{
+  @apply dark:bg-black
+}
+.dark-secondary{
+  @apply dark:bg-gray-800
+}
+.dark-form{
+  @apply dark:bg-gray-900
+}
+.dark-card{
+  @apply dark:bg-gray-800
+}
+
+
 
 :root {
   /* Override any color variable */

@@ -5,8 +5,8 @@ const UserPaiChart = ({ usersPots, interactions }) => {
   const usersPotsLength = usersPots.length;
   const interactionsLength = interactions.length;
   const data = [
-    { name: "Post", value: usersPotsLength, fill: "#0088FE" },
-    { name: "Interactions", value: interactionsLength, fill: "#00C49F" },
+    { name: "Post", value: usersPotsLength || 0, fill: "#0088FE" },
+    { name: "Interactions", value: interactionsLength || 0, fill: "#00C49F" },
   ];
   return (
     <PieChart

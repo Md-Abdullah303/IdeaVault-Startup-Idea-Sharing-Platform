@@ -58,7 +58,7 @@ const RegisterForm = () => {
   return (
     <div className=" flex flex-col items-center">
       <form
-        className="flex mx-auto mt-10 max-w-140 border p-3 rounded-lg flex-col gap-4 dark:bg-[#2e3642]"
+        className="flex mx-auto mt-10 max-w-140 border p-3 rounded-lg flex-col gap-4 dark-form"
         onSubmit={onSubmit}
       >
         {/* name */}
@@ -66,7 +66,7 @@ const RegisterForm = () => {
           <Label>Name</Label>
           <Input
             className={
-              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
             }
             placeholder="Enter your name"
           />
@@ -87,7 +87,7 @@ const RegisterForm = () => {
           <Label>Email</Label>
           <Input
             className={
-              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
             }
             placeholder="Enter your email"
           />
@@ -99,7 +99,7 @@ const RegisterForm = () => {
           <Label>Image URI</Label>
           <Input
             className={
-              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+              "!bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
             }
             placeholder="Enter your Image URI"
           />
@@ -128,7 +128,7 @@ const RegisterForm = () => {
           <div className="relative  w-full ">
             <Input
               className={
-                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
               }
               placeholder="Enter your password "
             />
@@ -173,7 +173,7 @@ const RegisterForm = () => {
           <div className="relative  w-full ">
             <Input
               className={
-                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-[#282b33] dark:!bg-[#222831] rounded-xs outline-none"
+                "w-full !bg-slate-100 border shadow-none border-gray-200 dark:!border-gray-500 dark:!bg-gray-700 rounded-xs outline-none"
               }
               placeholder="Confirm Your Password"
             />

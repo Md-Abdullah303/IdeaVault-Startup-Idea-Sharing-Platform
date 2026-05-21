@@ -61,6 +61,28 @@ const AddComment = ({ idea, comments }) => {
         "Pending..."
       ) : userData ? (
         <div className="">
+          <hr className="w-full my-10" />
+          <div className="mt-10">
+            <h1 className="text-lg font-semibold">
+              comment <span>({comments.length || 0})</span>
+            </h1>
+            {/* see all comment */}
+            <div className="">
+              {comments.length === 0 ? (
+                <div className=" mt-5 w-full bg-slate-200 dark-card dark:text-white p-5  rounded-lg">
+                  <h1 className="text-center text-xl md:text-3xl font-semibold my-5">
+                    No comment available
+                  </h1>
+                </div>
+              ) : (
+                <div className="w-full mt-4 space-y-7">
+                  {comments.map((comment, ind) => (
+                    <CommentCart key={ind} comment={comment} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
           {/* comment box */}
           <div className="mt-10 border rounded-lg flex flex-col items-end gap-2 p-3 border-gray-400">
             <textarea
@@ -78,28 +100,6 @@ const AddComment = ({ idea, comments }) => {
             >
               Submit
             </Button>
-          </div>
-          <hr className="w-full my-10" />
-          <div className="">
-            <h1 className="text-lg font-semibold">
-              comment <span>({comments.length || 0})</span>
-            </h1>
-            {/* see all comment */}
-            <div className="">
-              {comments.length === 0 ? (
-                <div className=" mt-5 w-full bg-slate-200 p-5  rounded-lg">
-                  <h1 className="text-center text-xl md:text-3xl font-semibold my-5">
-                    No comment available
-                  </h1>
-                </div>
-              ) : (
-                <div className="w-full mt-4 space-y-7">
-                  {comments.map((comment, ind) => (
-                    <CommentCart key={ind} comment={comment} />
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
         </div>
       ) : (

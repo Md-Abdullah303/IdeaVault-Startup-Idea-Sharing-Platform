@@ -28,7 +28,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-40 w-full shadow border-b border-separator bg-white dark:bg-[#37353E]">
+    <nav className="sticky top-0 z-40 w-full shadow border-b border-separator bg-white dark-secondary">
       <header className="flex h-16 items-center justify-between gap-6  px-6">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 md:gap-4">
@@ -41,11 +41,11 @@ export default function Navbar() {
 
               {isMenuOpen ? (
                 <RiMenuUnfold2Line
-                  className={`text-xl ${theme == "dark" ? "text-black" : "text-black"}`}
+                  className={`text-xl dark:text-white ${theme == "dark" ? "text-black" : "text-black"}`}
                 />
               ) : (
                 <RiMenuAddLine
-                  className={`text-xl ${theme == "dark" ? "text-black" : "text-black"}`}
+                  className={`text-xl dark:text-white ${theme == "dark" ? "text-black" : "text-black"}`}
                 />
               )}
             </button>

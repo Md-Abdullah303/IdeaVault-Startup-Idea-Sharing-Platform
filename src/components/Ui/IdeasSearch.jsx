@@ -1,8 +1,9 @@
 "use client";
 import getAllIdeas from "@/lib/getData/data";
 import { Button, Dropdown, Label } from "@heroui/react";
+import gsap from "gsap";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const IdeasSearch = () => {
@@ -11,6 +12,34 @@ const IdeasSearch = () => {
   const [category, setCategory] = useState("");
   const [shorting, setShorting] = useState("");
   const searchParams = useSearchParams();
+  const searchRef = useRef();
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const animation = () => {
+      gsap.from(searchRef.current, {
+        x: -25,
+        opacity: 0,
+        duration: 0.7,
+      });
+      gsap.to(searchRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+      });
+      gsap.from(dropdownRef.current, {
+        x: 25,
+        opacity: 0,
+        duration: 0.7,
+      });
+      gsap.to(dropdownRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+      });
+    };
+    animation();
+  }, []);
 
   const handleSearch = async () => {
     // console.log(search, "-search");
@@ -28,7 +57,10 @@ const IdeasSearch = () => {
   return (
     <div className="mt-8 flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4">
       {/* search Bar */}
-      <div className="border rounded-[4px] w-fit overflow-hidden flex items-center bg-white">
+      <div
+        ref={searchRef}
+        className="border rounded-[4px] w-fit overflow-hidden flex items-center bg-white"
+      >
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -44,7 +76,7 @@ const IdeasSearch = () => {
         </button>
       </div>
       {/* filter drowpdown */}
-      <div className="flex items-center gap-4">
+      <div ref={dropdownRef} className="flex items-center gap-4">
         <div className="">
           <Dropdown>
             <Button

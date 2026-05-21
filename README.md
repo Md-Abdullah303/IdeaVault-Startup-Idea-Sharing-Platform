@@ -52,6 +52,9 @@ Unlike booking or scheduling platforms, IdeaVault focuses on creativity, validat
 - 📱 Fully Responsive Design
 - 📊 Pie Chart Analytics using Recharts
 - ⚡ Fast & Smooth User Experience
+- 🔒 Protected Routes & APIs
+- 🛡️ JWT Token Verification
+- 👤 User-Specific Data Access Control
 
 ---
 
@@ -64,10 +67,12 @@ Unlike booking or scheduling platforms, IdeaVault focuses on creativity, validat
 | 💨 Tailwind CSS   | Styling             |
 | ✨ JavaScript ES6 | Core Language       |
 | 🔐 Better Auth    | Authentication      |
+| 🛡️ jose-cjs       | JWT Verification    |
 | 🍃 MongoDB        | Database            |
 | 📊 Recharts       | Analytics & Charts  |
 | 🎯 React Icons    | Icons               |
 | 📱 Swiper         | Sliders & Carousels |
+| 🚀 Express.js     | Backend Server      |
 
 ---
 
@@ -79,8 +84,12 @@ Unlike booking or scheduling platforms, IdeaVault focuses on creativity, validat
 2. `react`
 3. `react-dom`
 4. `mongodb`
-5. `better-auth`
-6. `@better-auth/mongo-adapter`
+5. `express`
+6. `better-auth`
+7. `@better-auth/mongo-adapter`
+8. `jose-cjs`
+9. `cors`
+10. `dotenv`
 
 ---
 
@@ -109,14 +118,76 @@ Unlike booking or scheduling platforms, IdeaVault focuses on creativity, validat
 
 ---
 
-# 🔐 Authentication
+# 🔐 Authentication & Security
 
-IdeaVault uses:
+IdeaVault uses a secure authentication system powered by Better Auth and JWT verification.
 
-- ✅ Better Auth
-- ✅ MongoDB Adapter
-- ✅ Session Management
-- ✅ Secure User Authentication
+### ✅ Authentication Features
+
+- Better Auth Authentication
+- MongoDB Adapter Integration
+- Session Management
+- Secure Login & Registration
+- Protected Routes
+- Protected API Endpoints
+- Authorization Header Validation
+
+### 🛡️ Server-Side Token Verification
+
+For sensitive operations, the backend verifies JWT tokens before allowing access to protected resources.
+
+The application uses:
+
+- `jose-cjs`
+- `jwtVerify()`
+- JWKS (JSON Web Key Set)
+
+to validate token authenticity directly on the server.
+
+### 🔑 Authentication Flow
+
+1. User logs in using Better Auth
+2. Better Auth generates a secure JWT token
+3. Client sends token through Authorization header
+
+```js
+Authorization: Bearer <token>
+```
+
+4. Express middleware intercepts the request
+5. Token is verified using JOSE + JWKS
+
+```js
+const { payload } = await jwtVerify(token, JWKS);
+```
+
+6. If verification succeeds → access granted
+7. If verification fails → request blocked
+
+### 🚫 Unauthorized Access Protection
+
+The following operations require valid authentication:
+
+- Create Ideas
+- Update Ideas
+- Delete Ideas
+- Add Comments
+- View Personal Ideas
+- Access User-Specific Data
+
+Requests without valid tokens automatically receive:
+
+```http
+401 Unauthorized
+```
+
+or
+
+```http
+403 Forbidden
+```
+
+responses from the server.
 
 ---
 
@@ -127,6 +198,35 @@ The application includes beautiful analytics dashboards using:
 - 📈 Recharts Pie Charts
 - 📊 User Activity Statistics
 - 🚀 Post & Interaction Insights
+- 📉 Visual Data Representation
+
+---
+
+# ⚙️ Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/your-username/idea-vault.git
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Run Development Server
+
+```bash
+npm run dev
+```
+
+## Backend Server
+
+```bash
+npm start
+```
 
 ---
 
@@ -146,7 +246,19 @@ At that moment I realized something important:
 
 > If I can come this far, then one day I can become something great in web development.
 
-This project gave me confidence, patience, problem-solving skills, and belief in myself.
+This project gave me confidence, patience, problem-solving skills, debugging experience, backend security knowledge, and belief in myself.
+
+I learned:
+
+- Authentication Systems
+- JWT Token Handling
+- Server-Side Token Verification
+- Protected APIs
+- MongoDB CRUD Operations
+- Full Stack Application Architecture
+- Dashboard Analytics
+- Responsive UI Design
+- Better Auth Integration
 
 I will continue building more powerful and beautiful applications in the future In Sha Allah 🤲
 
@@ -154,9 +266,11 @@ I will continue building more powerful and beautiful applications in the future 
 
 # ❤️ A Small Message
 
-> “Every bug taught me something.  
-> Every error made me stronger.  
-> Every success made me believe in myself more.”
+> Every bug taught me something.
+>
+> Every error made me stronger.
+>
+> Every success made me believe in myself more.
 
 ---
 
@@ -168,11 +282,12 @@ Please pray for me so that I can reach my dream destination and become a success
 
 ## 👨‍💻 Developer
 
-**MD Abdulla**
+### MD Abdulla
 
 - 🌍 Bangladesh
-- 💻 Passionate Frontend / Full Stack Learner
-- 🚀 Future Web Developer
+- 💻 Frontend & Full Stack Learner
+- 🚀 Future MERN Stack Developer
+- ❤️ Passionate About Building Useful Applications
 
 ---
 

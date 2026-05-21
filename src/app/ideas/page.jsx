@@ -1,3 +1,4 @@
+import IdeasH1 from "@/components/gsap/ideasH1";
 import DataNotFoundPage from "@/components/Ui/DataNotFoundPage";
 import IdeasPageCard from "@/components/Ui/IdeasPageCard";
 import IdeasSearch from "@/components/Ui/IdeasSearch";
@@ -19,9 +20,7 @@ const IdeasPage = async ({ searchParams }) => {
 
   return (
     <div className="w-[90%] md:w-[80%] mx-auto pt-15 space-y-4 pb-20">
-      <h1 className="flex items-center gap-1 text-2xl sm:text-3xl md:text-5xl font-bold ">
-        <FcIdea /> All Ideas
-      </h1>
+      <IdeasH1 />
 
       <IdeasSearch />
 

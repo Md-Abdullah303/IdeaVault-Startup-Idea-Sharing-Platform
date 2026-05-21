@@ -80,7 +80,7 @@ const TrustedByGrowing = () => {
 
   return (
     <div className="mt-40 mb-25 ">
-      <div className="flex items-center  justify-center flex-col gap-3">
+      <div className="flex items-center  text-center justify-center flex-col gap-3">
         <LogoChip>Trusted by Creators</LogoChip>
         <h1 className="text-xl md:text-4xl font-bold">
           Loved by Creative Founders & Startup Teams

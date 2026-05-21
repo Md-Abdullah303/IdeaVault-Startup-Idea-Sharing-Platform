@@ -52,7 +52,7 @@ const UserProfilePage = async () => {
       </div>
       {/* your interactions and posted ideas */}
       <Card className=" font-m rounded-lg py-10 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl duration-300 border shadow-lg bg-slate-100 dark:dark:bg-[#222831] p-3 flex flex-col items-center justify-center gap-1">
+        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl duration-300 border shadow-lg bg-slate-100 dark-primary p-3 flex flex-col items-center justify-center gap-1">
           <h1 className="text-2xl font-bold text-orange-500">
             💬 interactions
           </h1>
@@ -60,13 +60,13 @@ const UserProfilePage = async () => {
             {interactions.length || 0}
           </p>
         </Card>
-        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl duration-300 border dark:dark:bg-[#222831] shadow-lg bg-slate-100 p-3 flex flex-col items-center justify-center gap-1">
+        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl duration-300 border dark-primary shadow-lg bg-slate-100 p-3 flex flex-col items-center justify-center gap-1">
           <h1 className="text-2xl font-bold text-cyan-500">🚀 posts</h1>
           <p className="text-4xl font-semibold text-gray-400">
             {usersPots.length || 0}
           </p>
         </Card>
-        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl dark:dark:bg-[#222831] duration-300 border shadow-lg bg-slate-100 p-3 flex flex-col items-center justify-center gap-1">
+        <Card className="rounded-lg hover:-translate-y-1 hover:shadow-2xl dark-primary duration-300 border shadow-lg bg-slate-100 p-3 flex flex-col items-center justify-center gap-1">
           <p className="text-sm text-gray-400">
             Joined {new Date(createdAt).toLocaleDateString()}
           </p>

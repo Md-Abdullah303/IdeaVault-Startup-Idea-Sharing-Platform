@@ -14,7 +14,7 @@ const FeaturedCard = ({ data }) => {
     title,
   } = data;
   return (
-    <Card className="rounded-xs p-0">
+    <Card className="rounded-xs p-0 dark-card">
       <div className="relative   h-150 w-full rounded-t-lg overflow-hidden ">
         <img
           src={image}

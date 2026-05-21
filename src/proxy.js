@@ -7,11 +7,13 @@ export async function proxy(request) {
     headers: await headers(), // you need to pass the headers object.
   });
   const userData = session?.user;
-  if (!session) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  if (!session || !session?.user) {
+    const url = new URL("/login", request.url);
+    url.searchParams.set("callbackUrl", request.nextUrl.pathname);
+
+    return NextResponse.redirect(url);
   }
 }
-
 export const config = {
   matcher: [
     "/my-idea",
