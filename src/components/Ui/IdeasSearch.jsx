@@ -11,7 +11,7 @@ const IdeasSearch = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [shorting, setShorting] = useState("");
-  const [posting, setPosting] = useState("");
+  const [posting, setPosting] = useState("NewToOld");
   const searchParams = useSearchParams();
   const searchRef = useRef();
   const dropdownRef = useRef();
@@ -77,7 +77,7 @@ const IdeasSearch = () => {
         </button>
       </div>
       {/* filter drowpdown */}
-      <div ref={dropdownRef} className="flex flex-wrap items-center gap-4">
+      <div ref={dropdownRef} className="flex flex-wrap items-center  gap-4">
         <div className="">
           <Dropdown>
             <Button
@@ -168,7 +168,7 @@ const IdeasSearch = () => {
               aria-label="Menu"
               variant="secondary"
             >
-              {posting || "Posting"} <IoMdArrowDropdown />
+              {posting || "NewToOld"} <IoMdArrowDropdown />
             </Button>
             <Dropdown.Popover>
               <Dropdown.Menu
@@ -185,9 +185,6 @@ const IdeasSearch = () => {
                   router.push(`/ideas?${params.toString()}`);
                 }}
               >
-                <Dropdown.Item id="" textValue="Normal">
-                  <Label>Normal</Label>
-                </Dropdown.Item>
                 <Dropdown.Item id="NewToOld" textValue="NewToOld">
                   <Label>New to old</Label>
                 </Dropdown.Item>
