@@ -11,6 +11,7 @@ const IdeasSearch = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [shorting, setShorting] = useState("");
+  const [posting, setPosting] = useState("");
   const searchParams = useSearchParams();
   const searchRef = useRef();
   const dropdownRef = useRef();
@@ -76,7 +77,7 @@ const IdeasSearch = () => {
         </button>
       </div>
       {/* filter drowpdown */}
-      <div ref={dropdownRef} className="flex items-center gap-4">
+      <div ref={dropdownRef} className="flex flex-wrap items-center gap-4">
         <div className="">
           <Dropdown>
             <Button
@@ -154,6 +155,45 @@ const IdeasSearch = () => {
                 </Dropdown.Item>
                 <Dropdown.Item id="lowToHigh" textValue="lowToHigh">
                   <Label>low to high</Label>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown.Popover>
+          </Dropdown>
+        </div>
+        {/* sorted by postedDate */}
+        <div className="">
+          <Dropdown>
+            <Button
+              className={"rounded-xs border bg-white text-gray-400"}
+              aria-label="Menu"
+              variant="secondary"
+            >
+              {posting || "Posting"} <IoMdArrowDropdown />
+            </Button>
+            <Dropdown.Popover>
+              <Dropdown.Menu
+                onAction={(key) => {
+                  if (key === "Normal") {
+                    setPosting("");
+                  } else {
+                    setPosting(key);
+                  }
+
+                  const params = new URLSearchParams(window.location.search);
+                  params.set("posting", key);
+
+                  router.push(`/ideas?${params.toString()}`);
+                }}
+              >
+                <Dropdown.Item id="" textValue="Normal">
+                  <Label>Normal</Label>
+                </Dropdown.Item>
+                <Dropdown.Item id="NewToOld" textValue="NewToOld">
+                  <Label>New to old</Label>
+                </Dropdown.Item>
+
+                <Dropdown.Item id="OldToNew" textValue="OldToNew">
+                  <Label>Old to new</Label>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown.Popover>

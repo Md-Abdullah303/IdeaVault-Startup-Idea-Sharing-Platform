@@ -22,7 +22,7 @@ export function MyIdeasEditModal({ ideas }) {
 
     const formData = new FormData(e.currentTarget);
     const editedData = Object.fromEntries(formData.entries());
-    console.log(editedData);
+    // console.log(editedData);
 
     const res = await updateIdea(ideas._id, editedData);
     // console.log(res);

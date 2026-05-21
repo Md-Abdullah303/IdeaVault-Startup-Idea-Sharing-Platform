@@ -1,27 +1,21 @@
 "use client";
 
-import { deleteIdea } from "@/lib/getData/data";
+import { deleteComment } from "@/lib/getData/data";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import { MdDeleteOutline } from "react-icons/md";
 
-export function DeleteIdeas({ ideas }) {
-  const { title, _id } = ideas;
+export function CommentDeleteModal({ comment }) {
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await deleteIdea(_id);
+    const res = await deleteComment(comment._id);
     // console.log(res);
-    if (res) {
-      toast.success("Successfully deleted Idea!");
-      router.refresh();
-    }
   };
 
   return (
     <AlertDialog>
-      <Button className={"rounded-xs"} variant="danger-soft">
+      <Button className={"rounded-lg"} variant="danger">
         <MdDeleteOutline /> Delete
       </Button>
       <AlertDialog.Backdrop>
@@ -31,17 +25,12 @@ export function DeleteIdeas({ ideas }) {
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
               <AlertDialog.Heading>
-                Delete your <span className="text-green-500">IDEA</span>{" "}
-                permanently?
+                Delete comment permanently?
               </AlertDialog.Heading>
             </AlertDialog.Header>
             <AlertDialog.Body>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                This will permanently remove{" "}
-                <span className="font-semibold text-red-500">{title}</span> from
-                your ideas.
-                <br />
-                Once deleted, you won’t be able to recover it.
+              <p>
+                This will permanently delete <strong>your comment.</strong>{" "}
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>

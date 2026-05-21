@@ -3,12 +3,18 @@
 import { headers } from "next/headers";
 import { auth } from "../auth";
 
-const getAllIdeas = async (search = "", category = "", shorting = "") => {
+const getAllIdeas = async (
+  search = "",
+  category = "",
+  shorting = "",
+  posting = "",
+) => {
   const params = new URLSearchParams();
   if (search) params.append("search", search);
   if (category) params.append("filter", category);
   if (shorting) params.append("shorting", shorting);
-  console.log(`${process.env.SERVER_URL}/ideas?${params.toString()}`);
+  if (posting) params.append("posting", posting);
+  // console.log(`${process.env.SERVER_URL}/ideas?${params.toString()}`);
 
   const res = await fetch(
     `${process.env.SERVER_URL}/ideas?${params.toString()}`,
@@ -52,7 +58,7 @@ export const addIdeas = async (newIdea) => {
     body: JSON.stringify(newIdea),
   });
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -112,7 +118,7 @@ export const getUserIdeas = async (userId) => {
     },
   });
   const data = await res.json();
-  console.log(res, data);
+  // console.log(res, data);
   return data || [];
 };
 
@@ -144,6 +150,39 @@ export const deleteIdea = async (_id) => {
       "content-type": "application/json",
       authorization: `Bearer ${token}`,
     },
+  });
+  const data = await res.json();
+  return data;
+};
+
+// private
+export const deleteComment = async (commentId) => {
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const res = await fetch(`${process.env.SERVER_URL}/comment/${commentId}`, {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+  return data;
+};
+
+// private
+export const editComment = async (commentId, updatedComment) => {
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const res = await fetch(`${process.env.SERVER_URL}/comment/${commentId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(updatedComment),
   });
   const data = await res.json();
   return data;

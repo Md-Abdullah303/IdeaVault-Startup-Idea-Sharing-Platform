@@ -1,9 +1,11 @@
 import AddComment from "@/components/Ui/AddComment";
-import { auth } from "@/lib/auth";
 import { getCommentByPostId, getIdeasById } from "@/lib/getData/data";
 import { Avatar, Card, Chip } from "@heroui/react";
-import { headers } from "next/headers";
 import Image from "next/image";
+
+export const metadata = {
+  title: "Product Details page - IdeaVault",
+};
 
 const IdeasDetailsPage = async ({ params }) => {
   const { id } = await params;

@@ -15,7 +15,7 @@ const MyIdeaPage = async () => {
   });
   const userData = session?.user;
   const userIdeas = await getUserIdeas(userData?.id);
-  console.log(userIdeas);
+  // console.log(userIdeas);
 
   return (
     <div className="w-[90%] md:w-[80%] px-3 mx-auto pt-15 pb-20">

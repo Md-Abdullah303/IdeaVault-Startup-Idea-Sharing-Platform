@@ -23,14 +23,14 @@ const LoginForm = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-    console.log(callbackUrl);
+    // console.log(callbackUrl);
 
     const { data, error } = await authClient.signIn.email({
       email: userData.email, // required
       password: userData.password, // required
       callbackURL: callbackUrl,
     });
-    console.log(data, error);
+    // console.log(data, error);
     if (error) {
       toast.error(error?.message);
     } else if (data) {

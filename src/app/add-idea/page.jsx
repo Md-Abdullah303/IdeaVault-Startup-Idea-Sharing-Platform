@@ -1,8 +1,5 @@
 import AddIdeasForm from "@/components/allform/AddIdeasForm";
 import AddIdeaH1 from "@/components/gsap/AddIdeaH1";
-import { Button } from "@heroui/react";
-import Link from "next/link";
-import { LuArrowBigLeft } from "react-icons/lu";
 
 export const metadata = {
   title: "Add Ideas - IdeaVault",

@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import LogoLinkBtn from "../Ui/LogoLinkBtn";
 import { authClient } from "@/lib/auth-client";
 import UserProfileDropdown from "./UserProfileDropdown";
+import { Spinner } from "@heroui/react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,20 +57,40 @@ export default function Navbar() {
                   alt="logo"
                   width={500}
                   height={400}
-                  className="sm:w-8 w-6"
+                  className="sm:w-8 w-5"
                 />
-                <h1 className="font-logo text-lg md:text-2xl font-bold text-slate-700">
+                <h1 className="font-logo text-[15px] md:text-2xl font-bold text-slate-700">
                   IdeaVault
                 </h1>
               </div>
             </LogoLinkBtn>
           </div>
           <ul className="hidden items-center  gap-2 md:flex">
-            {tabs.map((tab, ind) => (
-              <li key={ind}>
-                <MyNavLink href={tab.href}>{tab.name}</MyNavLink>
-              </li>
-            ))}
+            <li>
+              <MyNavLink href={"/"}>Home</MyNavLink>
+            </li>
+            <li>
+              <MyNavLink href={"/ideas"}>Ideas</MyNavLink>
+            </li>
+            {isPending ? (
+              <Spinner color="accent" />
+            ) : (
+              userData && (
+                <div className="hidden items-center  gap-2 md:flex ">
+                  <li>
+                    <MyNavLink href={"/add-idea"}>Add Idea</MyNavLink>
+                  </li>
+                  <li>
+                    <MyNavLink href={"/my-idea"}>My Idea</MyNavLink>
+                  </li>
+                  <li>
+                    <MyNavLink href={"/my-interactions"}>
+                      My Interactions
+                    </MyNavLink>
+                  </li>
+                </div>
+              )
+            )}
           </ul>
         </div>
         {/* right side */}
@@ -78,7 +99,9 @@ export default function Navbar() {
             <SwithThemeBtn />
 
             {isPending ? (
-              "Loading profile..."
+              <div className="flex px-4 flex-col items-center gap-2">
+                <Spinner color="success" />
+              </div>
             ) : userData ? (
               <div className="">
                 <UserProfileDropdown userData={userData} />
@@ -99,16 +122,39 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className={`border-t border-separator md:hidden `}>
           <ul className="grid grid-cols-2 gap-3 px-2 py-4">
-            {tabs.map((tab, ind) => (
-              <li
-                key={ind}
-                className={`${theme == "dark" ? "text-black" : "text-black"}`}
-              >
-                <MyNavLink href={tab.href} className="block py-2">
-                  {tab.name}
-                </MyNavLink>
-              </li>
-            ))}
+            <li className={``} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <MyNavLink href={"/"} className="block py-2">
+                Home
+              </MyNavLink>
+            </li>
+            <li className={``} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <MyNavLink href={"/ideas"} className="block py-2">
+                Ideas
+              </MyNavLink>
+            </li>
+            {isPending ? (
+              <Spinner color="accent" />
+            ) : (
+              userData && (
+                <div className="grid grid-cols-2 gap-3 py-4 col-span-2">
+                  <li onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <MyNavLink href={"/add-idea"} className="block py-2">
+                      Add Idea
+                    </MyNavLink>
+                  </li>
+                  <li onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <MyNavLink href={"/my-idea"} className="block py-2">
+                      My Idea
+                    </MyNavLink>
+                  </li>
+                  <li onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <MyNavLink href={"/my-interactions"} className="block py-2">
+                      My Interactions
+                    </MyNavLink>
+                  </li>
+                </div>
+              )
+            )}
           </ul>
         </div>
       )}

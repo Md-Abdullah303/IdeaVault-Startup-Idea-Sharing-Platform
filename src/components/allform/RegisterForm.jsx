@@ -29,7 +29,7 @@ const RegisterForm = () => {
       return;
     }
 
-    console.log(userData);
+    // console.log(userData);
 
     const { data, error } = await authClient.signUp.email({
       name: userData.name, // required
@@ -38,7 +38,7 @@ const RegisterForm = () => {
       image: userData.image,
       callbackURL: "/",
     });
-    console.log("data , error", data, error);
+    // console.log("data , error", data, error);
     if (error) {
       toast.error(error?.message);
     } else if (data) {

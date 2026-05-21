@@ -3,10 +3,9 @@ import DataNotFoundPage from "@/components/Ui/DataNotFoundPage";
 import IdeasPageCard from "@/components/Ui/IdeasPageCard";
 import IdeasSearch from "@/components/Ui/IdeasSearch";
 import getAllIdeas from "@/lib/getData/data";
-import { FcIdea } from "react-icons/fc";
 
 export const metadata = {
-  title: "Ideas - IdeaVault",
+  title: "All Ideas - IdeaVault",
 };
 
 const IdeasPage = async ({ searchParams }) => {
@@ -14,9 +13,10 @@ const IdeasPage = async ({ searchParams }) => {
   const search = sParams?.search || "";
   const category = sParams?.filter || "";
   const shorting = sParams?.shorting || "";
+  const posting = sParams?.posting || "";
   // console.log(search, category, shorting);
-  const allIdeas = await getAllIdeas(search, category, shorting);
-  // console.log(sParams);
+  const allIdeas = await getAllIdeas(search, category, shorting, posting);
+  // console.log(allIdeas);
 
   return (
     <div className="w-[90%] md:w-[80%] mx-auto pt-15 space-y-4 pb-20">

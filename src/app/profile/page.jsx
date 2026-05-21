@@ -3,11 +3,15 @@ import UserTable from "@/components/Ui/UserTable";
 import { UserUpdateProfileModal } from "@/components/Ui/UserUpdateProfileModal";
 import { auth } from "@/lib/auth";
 import { getCommentByUserId, getUserIdeas } from "@/lib/getData/data";
-import { Button, Card } from "@heroui/react";
+import { Card } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+export const metadata = {
+  title: "User Profile - IdeaVault",
+};
 
 const UserProfilePage = async () => {
   const session = await auth.api.getSession({

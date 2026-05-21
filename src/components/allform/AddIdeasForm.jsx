@@ -16,7 +16,7 @@ const AddIdeasForm = () => {
     isPending, //loading state
   } = authClient.useSession();
   const userData = session?.user;
-  console.log(userData);
+  // console.log(userData);
 
   // validateImageURL
   const validateImageURL = (url) => {
@@ -65,9 +65,9 @@ const AddIdeasForm = () => {
       return;
     }
 
-    console.log(ideaData);
+    // console.log(ideaData);
     const res = await addIdeas(ideaData);
-    console.log(res);
+    // console.log(res);
     if (res.acknowledged) {
       router.push("/ideas");
       // e.currentTarget.reset();

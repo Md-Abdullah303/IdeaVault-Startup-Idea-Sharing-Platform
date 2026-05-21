@@ -21,7 +21,7 @@ export function UserUpdateProfileModal() {
       return;
     }
 
-    console.log(name, image);
+    // console.log(name, image);
     await authClient.updateUser({
       image,
       name,
