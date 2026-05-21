@@ -21,7 +21,7 @@ const UserProfileDropdown = ({ userData }) => {
   // console.log(userData);
   const { name, email, image } = userData;
   return (
-    <div className="flex items-center pl-1 gap-2.5">
+    <div className="flex items-center overflow-hidden pl-1 gap-2.5">
       <Dropdown>
         <Dropdown.Trigger className="rounded-full">
           <Avatar>

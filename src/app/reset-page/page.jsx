@@ -130,9 +130,11 @@ const ResetPage = () => {
         </TextField>
       </div>
 
-      <Button className={"rounded-lg mt-2"} onClick={handleSave}>
-        Save
-      </Button>
+      <div className="flex justify-center items-center">
+        <Button className={"rounded-lg mt-2  "} onClick={handleSave}>
+          Save
+        </Button>
+      </div>
     </div>
   );
 };
